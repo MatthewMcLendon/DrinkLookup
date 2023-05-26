@@ -1,14 +1,20 @@
-import { useDrinks, getPopularDrinks } from "./drinkDataProvider.js";
+import { getPopularDrinks, getSearchedDrinks } from "./drinkDataProvider.js";
 import { drinkList } from "./drinkList.js";
 
 const eventHub = document.querySelector(".container");
 
-export async function drinkInitialList() {
+export const drinkInitialList = () => {
   getPopularDrinks().then(drinkList);
-}
+};
 
 export const drinkEventHandler = () => {
   eventHub.addEventListener("click", (event) => {
-    console.log("click event on container");
+    event.preventDefault();
+    console.log("Clicked!");
+    if (event.target.id === "search-button") {
+      console.log("Search clicked");
+      const searchValue = document.querySelector(".search-bar").value;
+      getSearchedDrinks(searchValue).then(drinkList);
+    }
   });
 };
