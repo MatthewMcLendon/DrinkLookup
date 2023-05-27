@@ -27,7 +27,10 @@ export const drinkEventHandler = () => {
       getDrinkByID(drinkID).then(drinkDetail);
     }
 
-    if (event.target.className === "drink-name" || "drink-preview") {
+    if (
+      event.target.className === "drink-name" ||
+      event.target.className === "drink-preview"
+    ) {
       const drinkID = event.target.parentElement.id;
       getDrinkByID(drinkID).then(drinkDetail);
     }
