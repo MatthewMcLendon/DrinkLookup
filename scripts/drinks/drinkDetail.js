@@ -28,8 +28,11 @@ const ingredientList = (drink) => {
   for (let i = 1; i <= 15; i++) {
     let ingredient = drink[0][`strIngredient${i}`];
     let serving = drink[0][`strMeasure${i}`];
-    if (ingredient) {
+    if (ingredient && serving) {
       ingredients.push(serving + ingredient);
+    }
+    if (ingredient && !serving) {
+      ingredients.push(ingredient);
     }
   }
 
