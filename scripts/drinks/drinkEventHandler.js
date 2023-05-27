@@ -2,6 +2,7 @@ import {
   getPopularDrinks,
   getSearchedDrinks,
   getDrinkByID,
+  getDrinkByIngredient,
 } from "./drinkDataProvider.js";
 import { drinkList } from "./drinkList.js";
 import { drinkDetail } from "./drinkDetail.js";
@@ -24,6 +25,15 @@ export const drinkEventHandler = () => {
     if (event.target.className === "drink-card") {
       const drinkID = event.target.id;
       getDrinkByID(drinkID).then(drinkDetail);
+    }
+
+    if (event.target.className === "link") {
+      if (event.target.id === "popular") {
+        drinkInitialList();
+      } else {
+        const searchValue = event.target.id;
+        getDrinkByIngredient(searchValue).then(drinkList);
+      }
     }
   });
 };

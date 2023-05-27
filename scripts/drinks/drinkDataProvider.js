@@ -35,3 +35,13 @@ export const getDrinkByID = (id) => {
       drinks = parsedDrinks.drinks;
     });
 };
+
+export const getDrinkByIngredient = (searchValue) => {
+  return fetch(
+    `https://www.thecocktaildb.com/api/json/v1/${settings.APIkey}/filter.php?i=${searchValue}`
+  )
+    .then((response) => response.json())
+    .then((parsedDrinks) => {
+      drinks = parsedDrinks.drinks;
+    });
+};
