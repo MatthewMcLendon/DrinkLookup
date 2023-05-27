@@ -27,6 +27,11 @@ export const drinkEventHandler = () => {
       getDrinkByID(drinkID).then(drinkDetail);
     }
 
+    if (event.target.className === "drink-name" || "drink-preview") {
+      const drinkID = event.target.parentElement.id;
+      getDrinkByID(drinkID).then(drinkDetail);
+    }
+
     if (event.target.className === "link") {
       if (event.target.id === "popular") {
         drinkInitialList();
