@@ -8,7 +8,7 @@ export const useDrinks = () => {
 
 export const getPopularDrinks = () => {
   return fetch(
-    `https://www.thecocktaildb.com/api/json/v1/${settings.APIkey}/search.php?s=margarita`
+    `https://www.thecocktaildb.com/api/json/v1/${settings.APIkey}/filter.php?a=Alcoholic`
   )
     .then((response) => response.json())
     .then((parsedDrinks) => {
@@ -19,6 +19,16 @@ export const getPopularDrinks = () => {
 export const getSearchedDrinks = (searchValue) => {
   return fetch(
     `https://www.thecocktaildb.com/api/json/v1/${settings.APIkey}/search.php?s=${searchValue}`
+  )
+    .then((response) => response.json())
+    .then((parsedDrinks) => {
+      drinks = parsedDrinks.drinks;
+    });
+};
+
+export const getDrinkByID = (id) => {
+  return fetch(
+    `https://www.thecocktaildb.com/api/json/v1/${settings.APIkey}/lookup.php?i=${id}`
   )
     .then((response) => response.json())
     .then((parsedDrinks) => {
